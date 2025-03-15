@@ -5,11 +5,13 @@ public class Category {
     private long id;
     private String tilte;
 
-    public String getTilte() {
+    public String getTilte()
+    {
         return tilte;
     }
 
-    public void setTilte(String tilte) {
+    public void setTilte(String tilte)
+    {
         this.tilte = tilte;
     }
 
