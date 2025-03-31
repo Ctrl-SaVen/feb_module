@@ -2,6 +2,8 @@ package com.scaler.feb_module.Controllers;
 
 import com.scaler.feb_module.Models.Products;
 import com.scaler.feb_module.Services.productService;
+import com.scaler.feb_module.dto.ErrorDto;
+import com.scaler.feb_module.exceptions.ProductNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,7 @@ public class ProductController {
       return p;
     }
 @GetMapping("getProduct/{id}")
-    public Products getProductById(@PathVariable("id") long id)
+    public Products getProductById(@PathVariable("id") long id) throws ProductNotFound
 {
 //        System.out.println("getProductById controller"+id);\
 
@@ -42,6 +44,21 @@ public class ProductController {
     {
 
     }
+
+    @ExceptionHandler(ProductNotFound.class)
+    public ErrorDto handleProductNotFoundException(Exception e)
+    {
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setMessage(e.getMessage());
+        return errorDto;
+    }
+
+
+
+
+
+
+
 
 
 

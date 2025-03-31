@@ -64,7 +64,10 @@ private String category;
         this.category = category;
     }
 
-    public Products getProducts() {
+
+//    Products products = new Products();
+    public Products getProducts()
+    {
 
     Products products = new Products();
     products.setId(id);

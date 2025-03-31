@@ -2,6 +2,7 @@ package com.scaler.feb_module.Services;
 
 import com.scaler.feb_module.Models.Products;
 import com.scaler.feb_module.dto.fakestoreDto;
+import com.scaler.feb_module.exceptions.ProductNotFound;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,16 +14,23 @@ public class fakeStoreProductService implements productService {
 
 
     private RestTemplate restTemplate;
+    // we are using rest templetees to convert json format to java objects
 
     public fakeStoreProductService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     @Override
-    public Products getProductbyId(Long id) {
+    public Products getProductbyId(Long id) throws ProductNotFound {
         System.out.println("getProductbyId @ service: " + id);
 
         fakestoreDto fkdto = restTemplate.getForObject("https://fakestoreapi.com/products/" + id, fakestoreDto.class);
+
+        if(fkdto == null)
+        {
+            throw new ProductNotFound("Product not found with id: " + id);
+        }
+
         return fkdto.getProducts();
     }
 
