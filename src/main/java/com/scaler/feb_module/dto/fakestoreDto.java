@@ -9,20 +9,32 @@ import lombok.Setter;
 public class fakestoreDto
 {
 
-private long id;
+//private long id;
 private String title;
 private double price;
 private String image;
 private String description;
 private String category;
 
-    public long getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "fakestoreDto{" +
+//                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public String getTitle() {
         return title;
@@ -70,7 +82,7 @@ private String category;
     {
 
     Products products = new Products();
-    products.setId(id);
+//    products.setId(id);
     products.setTitle(title);
     products.setPrice(price);
     products.setDescription(description);
@@ -84,6 +96,8 @@ private String category;
 
 return products;
 }
+
+
 
 
 

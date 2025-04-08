@@ -1,8 +1,10 @@
 package com.scaler.feb_module.Models;
 
+import jakarta.persistence.Entity;
 
-public class Category {
-    private long id;
+@Entity
+public class Category extends base_model{
+//    private long id;
     private String tilte;
 
     public String getTilte()
@@ -14,18 +16,18 @@ public class Category {
     {
         this.tilte = tilte;
     }
+//
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Category(String tilte, long id) {
+    public Category(String tilte) {
         this.tilte = tilte;
-        this.id = id;
+//        this.id = id;
     }
 
     public Category() {

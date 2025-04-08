@@ -1,20 +1,26 @@
 package com.scaler.feb_module.Models;
 
-public class Products {
-    private long id;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+public class Products extends base_model{
+//    private long id;
     private String title;
     private String description;
     private String imageUrl;
     private double price;
+    @ManyToOne
     private Category category;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+//    public long getId() {
+//        return id;
+//    }
+//
+//    public void setId(long id) {
+//        this.id = id;
+//    }
 
     public String getTitle() {
         return title;
@@ -48,23 +54,22 @@ public class Products {
         this.price = price;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
     public void setCategory(Category category) {
         this.category = category;
+    }
+    private Category getCategory() {
+        return category;
     }
 
     public Products() {
     }
 
-    public Products(Category category, double price, String imageUrl, String description, String title, long id) {
-        this.category = category;
+    public Products(Category category, double price, String imageUrl, String description, String title) //,long id) {
+    {  this.category = category;
         this.price = price;
         this.imageUrl = imageUrl;
         this.description = description;
         this.title = title;
-        this.id = id;
+//        this.id = id;
     }
 }

@@ -5,6 +5,8 @@ import com.scaler.feb_module.Services.productService;
 import com.scaler.feb_module.dto.ErrorDto;
 import com.scaler.feb_module.exceptions.ProductNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,18 +23,20 @@ public class ProductController {
 @RequestMapping(value = "/createProduct",method=RequestMethod.POST)
     public Products createProduct(@RequestBody Products products)
 {
-     Products p = pdtService.createProduct(products.getId(),products.getTitle(),products.getDescription(),products.getPrice(),products.getCategory().getTilte() );
+//     Products p = pdtService.createProduct(/*products.getId(),*/products.getTitle(),products.getDescription(),products.getPrice(),products.getCategory().getTilte() );
      
-      return p;
+      return null; //p;
     }
 @GetMapping("getProduct/{id}")
-    public Products getProductById(@PathVariable("id") long id) throws ProductNotFound
+    public ResponseEntity<Products> getProductById(@PathVariable("id") long id) throws ProductNotFound
 {
 //        System.out.println("getProductById controller"+id);\
 
-      Products p=  pdtService.getProductbyId(id);
+//      Products p=  pdtService.getProductbyId(id);
+//
+//      ResponseEntity<Products> response = new ResponseEntity<>(p, HttpStatus.OK);
 
-    return p;
+    return null; // response;
     }
 
     public void deleteProductById(long id)
@@ -46,11 +50,13 @@ public class ProductController {
     }
 
     @ExceptionHandler(ProductNotFound.class)
-    public ErrorDto handleProductNotFoundException(Exception e)
+    public ResponseEntity<ErrorDto> handleProductNotFoundException(Exception e)
     {
         ErrorDto errorDto = new ErrorDto();
         errorDto.setMessage(e.getMessage());
-        return errorDto;
+
+        ResponseEntity<ErrorDto> response1 = new ResponseEntity<>(errorDto, HttpStatus.NOT_FOUND);
+        return response1;
     }
 
 
