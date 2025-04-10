@@ -22,6 +22,8 @@ public class Products extends base_model{
 //        this.id = id;
 //    }
 
+
+
     public String getTitle() {
         return title;
     }
@@ -57,7 +59,8 @@ public class Products extends base_model{
     public void setCategory(Category category) {
         this.category = category;
     }
-    private Category getCategory() {
+
+    public Category getCategory() {
         return category;
     }
 

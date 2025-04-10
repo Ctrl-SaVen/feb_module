@@ -5,6 +5,7 @@ import com.scaler.feb_module.Services.productService;
 import com.scaler.feb_module.dto.ErrorDto;
 import com.scaler.feb_module.exceptions.ProductNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,16 +17,17 @@ public class ProductController {
     private productService pdtService;
 //
 //
-    public ProductController(productService ProductService) {
+    public ProductController(@Qualifier("selfProductService") productService ProductService) {
         this.pdtService = ProductService;
     }
 
 @RequestMapping(value = "/createProduct",method=RequestMethod.POST)
     public Products createProduct(@RequestBody Products products)
 {
-//     Products p = pdtService.createProduct(/*products.getId(),*/products.getTitle(),products.getDescription(),products.getPrice(),products.getCategory().getTilte() );
+    System.out.println(products.getCategory().getTitle());
+     Products p = pdtService.createProduct(products.getId(),products.getTitle(),products.getDescription(),products.getPrice(),products.getCategory().getTitle() );
      
-      return null; //p;
+      return p;
     }
 @GetMapping("getProduct/{id}")
     public ResponseEntity<Products> getProductById(@PathVariable("id") long id) throws ProductNotFound

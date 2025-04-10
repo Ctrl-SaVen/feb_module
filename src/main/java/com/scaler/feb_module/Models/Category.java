@@ -5,16 +5,16 @@ import jakarta.persistence.Entity;
 @Entity
 public class Category extends base_model{
 //    private long id;
-    private String tilte;
+    private String title;
 
-    public String getTilte()
+    public String getTitle()
     {
-        return tilte;
+        return title;
     }
 
-    public void setTilte(String tilte)
+    public void setTitle(String title)
     {
-        this.tilte = tilte;
+        this.title = title;
     }
 //
 //    public long getId() {
@@ -25,8 +25,8 @@ public class Category extends base_model{
 //        this.id = id;
 //    }
 
-    public Category(String tilte) {
-        this.tilte = tilte;
+    public Category(String title) {
+        this.title = title;
 //        this.id = id;
     }
 

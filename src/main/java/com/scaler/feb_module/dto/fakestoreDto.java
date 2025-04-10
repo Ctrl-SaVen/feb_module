@@ -89,7 +89,7 @@ private String category;
     products.setImageUrl(image);
 
     Category cat = new Category();
-    cat.setTilte(category);
+    cat.setTitle(category);
 
     products.setCategory(cat);
 
